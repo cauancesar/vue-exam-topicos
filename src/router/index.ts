@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'anotacao',
       component: () => import('../views/AnotacaoView.vue'),
     },
+    {
+      path: '/revisao',
+      name: 'revisao',
+      component: () => import('../views/RevisaoView.vue'),
+    },
   ],
 })
 

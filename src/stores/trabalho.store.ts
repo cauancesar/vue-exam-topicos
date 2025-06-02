@@ -1,19 +1,19 @@
-import { useUsuarioService } from '@/services/usuario.service'
-import type { Usuario } from '@/types/usuario.interface'
+import { useTrabalhoService } from '@/services/trabalho.service'
+import type { Trabalho } from '@/types/trabalho.interface'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-export const usuarioStore = defineStore('usuario', () => {
-  const useUsuario = useUsuarioService()
+export const trabalhoStore = defineStore('trabalho', () => {
+  const useTrabalho = useTrabalhoService()
 
   const loading = ref<boolean>(false)
   const erro = ref<string>('')
-  const usuarios = ref<Usuario[]>([])
+  const trabalhos = ref<Trabalho[]>([])
 
   async function atualizar() {
     loading.value = true
     try {
-      usuarios.value = await useUsuario.getAll()
+      trabalhos.value = await useTrabalho.getAll()
       erro.value = ''
     } catch (error) {
       erro.value = (error as Error).message
@@ -26,6 +26,6 @@ export const usuarioStore = defineStore('usuario', () => {
     loading,
     erro,
     atualizar,
-    usuarios,
+    trabalhos,
   }
 })
